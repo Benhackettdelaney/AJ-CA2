@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Button } from 'react-native';
-import LoginForm from '@/components/LoginForm';
-import { useSession } from '@/context/AuthContext'
+import { View, Text, StyleSheet, Button } from "react-native";
+import LoginForm from "@/components/LoginForm";
+import { useSession } from "@/context/AuthContext";
 
 export default function Tab() {
   const { session, signOut } = useSession();
@@ -9,16 +9,11 @@ export default function Tab() {
     <View style={styles.container}>
       <Text>Tab Home</Text>
 
-      {(session) ? (
-         <Button
-         onPress={signOut}
-         title= 'Logout'
-         color='#841584'
-         />
+      {session ? (
+        <Button onPress={signOut} title="Logout" color="#841584" />
       ) : (
         <LoginForm />
       )}
-
     </View>
   );
 }
@@ -26,7 +21,7 @@ export default function Tab() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

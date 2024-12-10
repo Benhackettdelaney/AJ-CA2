@@ -1,5 +1,5 @@
-import { Stack } from 'expo-router/stack';
-import { SessionProvider } from '@/context/AuthContext';
+import { Stack } from "expo-router/stack";
+import { SessionProvider } from "@/context/AuthContext";
 
 export default function Layout() {
   return (

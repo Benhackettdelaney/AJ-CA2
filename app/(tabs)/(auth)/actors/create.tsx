@@ -9,12 +9,10 @@ export default function Page() {
   const router = useRouter();
   const session = useSession();
   const [form, setForm] = useState({
-    title: "",
-    description: "",
-    genre_id: "",
-    actor_id: "",
-    list_id: "",
-    release_date: "",
+    actorNames: "",
+    nationality: "",
+    birthday: "",
+    movie_id: "",
   });
   const { postRequest, data, loading, error } = useAPI();
 
@@ -28,7 +26,7 @@ export default function Page() {
     console.log("Clicked");
 
     postRequest(
-      "https://aj-ca-1-nycs.vercel.app/api/movie",
+      "https://aj-ca-1-nycs.vercel.app/api/actor",
       form,
       {
         headers: {
@@ -36,7 +34,7 @@ export default function Page() {
         },
       },
       (data: IResponseType) => {
-        router.push(`/movies/${data._id}`);
+        router.push(`/actors/${data._id}`);
       }
     );
     console.log(data);
@@ -46,49 +44,40 @@ export default function Page() {
 
   return (
     <>
-      <Text>Title</Text>
+      <Text>Actor Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Title"
-        value={form.title}
+        placeholder="Actor Name"
+        value={form.actorNames}
         onChange={handleChange}
-        id="title"
+        id="actorNames"
       />
 
-      <Text>Description</Text>
+      <Text>Nationality</Text>
       <TextInput
         style={styles.input}
-        placeholder="Description"
-        value={form.description}
+        placeholder="Nationality"
+        value={form.nationality}
         onChange={handleChange}
-        id="description"
+        id="nationality"
       />
 
-      <Text>Genre</Text>
+      <Text>Birthday</Text>
       <TextInput
         style={styles.input}
-        placeholder="Genre"
-        value={form.genre_id}
+        placeholder="Birthday"
+        value={form.birthday}
         onChange={handleChange}
-        id="genre_id"
+        id="birthday"
       />
 
-      <Text>Actor</Text>
+      <Text>Movie</Text>
       <TextInput
         style={styles.input}
-        placeholder="Actor"
-        value={form.actor_id}
+        placeholder="Movie"
+        value={form.movie_id}
         onChange={handleChange}
-        id="actor_id"
-      />
-
-      <Text>List</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="List"
-        value={form.list_id}
-        onChange={handleChange}
-        id="list_id"
+        id="movie_id"
       />
       <Text>{error}</Text>
 

@@ -9,12 +9,8 @@ export default function Page() {
   const router = useRouter();
   const session = useSession();
   const [form, setForm] = useState({
-    title: "",
-    description: "",
-    genre_id: "",
-    actor_id: "",
-    list_id: "",
-    release_date: "",
+    genreName: "",
+    movie_id: "",
   });
   const { postRequest, data, loading, error } = useAPI();
 
@@ -28,7 +24,7 @@ export default function Page() {
     console.log("Clicked");
 
     postRequest(
-      "https://aj-ca-1-nycs.vercel.app/api/movie",
+      "https://aj-ca-1-nycs.vercel.app/api/actor",
       form,
       {
         headers: {
@@ -36,7 +32,7 @@ export default function Page() {
         },
       },
       (data: IResponseType) => {
-        router.push(`/movies/${data._id}`);
+        router.push(`/genres/${data._id}`);
       }
     );
     console.log(data);
@@ -46,49 +42,22 @@ export default function Page() {
 
   return (
     <>
-      <Text>Title</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Title"
-        value={form.title}
-        onChange={handleChange}
-        id="title"
-      />
-
-      <Text>Description</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Description"
-        value={form.description}
-        onChange={handleChange}
-        id="description"
-      />
-
       <Text>Genre</Text>
       <TextInput
         style={styles.input}
         placeholder="Genre"
-        value={form.genre_id}
+        value={form.genreName}
         onChange={handleChange}
-        id="genre_id"
+        id="genreName"
       />
 
-      <Text>Actor</Text>
+      <Text>Nationality</Text>
       <TextInput
         style={styles.input}
-        placeholder="Actor"
-        value={form.actor_id}
+        placeholder="Nationality"
+        value={form.nationality}
         onChange={handleChange}
-        id="actor_id"
-      />
-
-      <Text>List</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="List"
-        value={form.list_id}
-        onChange={handleChange}
-        id="list_id"
+        id="nationality"
       />
       <Text>{error}</Text>
 
