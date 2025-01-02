@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <SessionProvider>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: true }} />
       </Stack>
     </SessionProvider>
   );

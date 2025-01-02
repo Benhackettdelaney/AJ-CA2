@@ -4,7 +4,7 @@ import { useSession } from "@/context/AuthContext";
 
 export default function Tab() {
   const { session, signOut } = useSession();
-
+  console.log(session)
   return (
     <View style={styles.container}>
       <Text>Tab Home</Text>

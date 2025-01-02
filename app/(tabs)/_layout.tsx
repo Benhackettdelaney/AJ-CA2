@@ -1,75 +1,27 @@
-import { Text, TextInput, StyleSheet, Button } from "react-native";
-import { useState } from "react";
-import axios from "axios";
+import { View, Text, StyleSheet, Button } from "react-native";
+import LoginForm from "@/components/LoginForm";
 import { useSession } from "@/context/AuthContext";
-import { IAuthContext } from "@/types";
 
-export default function LoginForm() {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState("");
-
-  const { signIn } = useSession();
-
-  const handleChange = (e: any) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
-  };
-
-  const handlePress = () => {
-    console.log("Clicked");
-
-    axios
-      .post("http://aj-ca-1-nycs.vercel.app/api/user/login", {
-        email: form.email,
-        password: form.password,
-      })
-      .then((response) => {
-        console.log(response.data.token);
-        signIn(response.data.token);
-      })
-      .catch((e) => {
-        console.log(e);
-        setError(e.response.data.message);
-      });
-  };
-
+export default function Tab() {
+  const { session, signOut } = useSession();
+  console.log(session)
   return (
-    //form
-    <>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        id="email"
-      />
+    <View style={styles.container}>
+      <Text>Tab Home</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-        id="password"
-      />
-
-      <Text>{error}</Text>
-
-      <Button onPress={handlePress} title="Submit" color="green" />
-    </>
+      {session ? (
+        <Button onPress={signOut} title="Logout" color="#841584" />
+      ) : (
+        <LoginForm />
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

@@ -25,7 +25,8 @@ export default function LoginForm() {
     console.log("Clicked");
 
     axios
-      .post("http://aj-ca-1-nycs.vercel.app/api/user/login", {
+      .post("http://localhost:5000/api/user/login", {
+        // post("http://aj-ca-1-nycs.vercel.app/api/user/login", {
         email: form.email,
         password: form.password,
       })

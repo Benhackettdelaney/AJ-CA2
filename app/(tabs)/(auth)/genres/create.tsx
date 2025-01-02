@@ -51,13 +51,13 @@ export default function Page() {
         id="genreName"
       />
 
-      <Text>Nationality</Text>
+      <Text>Movie</Text>
       <TextInput
         style={styles.input}
-        placeholder="Nationality"
-        value={form.nationality}
+        placeholder="Movie"
+        value={form.movie_id}
         onChange={handleChange}
-        id="nationality"
+        id="movie_id"
       />
       <Text>{error}</Text>
 
