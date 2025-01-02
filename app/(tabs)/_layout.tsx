@@ -1,20 +1,27 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-import LoginForm from "@/components/LoginForm";
-import { useSession } from "@/context/AuthContext";
+import { StyleSheet } from "react-native";
+import { Tabs, Stack } from 'expo-router';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function Tab() {
-  const { session, signOut } = useSession();
-  console.log(session)
+  console.log("session in tsbd _layout")
   return (
-    <View style={styles.container}>
-      <Text>Tab Home</Text>
+    <Tabs>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          // tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="movies"
+        options={{
+          title: 'Movies',
+          // tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+        }}
+      />
 
-      {session ? (
-        <Button onPress={signOut} title="Logout" color="#841584" />
-      ) : (
-        <LoginForm />
-      )}
-    </View>
+    </Tabs>
   );
 }
 

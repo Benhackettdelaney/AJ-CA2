@@ -3,8 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useSession } from "@/context/AuthContext";
 import { IAuthContext } from "@/types";
+import React from "react";
+import { Redirect } from "expo-router";
+import { useRouter } from "expo-router"; 
 
 export default function LoginForm() {
+
+  const router = useRouter()
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -33,6 +38,8 @@ export default function LoginForm() {
       .then((response) => {
         console.log(response.data.token);
         signIn(response.data.token);
+        console.log("IN REDIRECT")
+      return router.navigate("/(tabs)/")
       })
       .catch((e) => {
         console.log(e);

@@ -31,6 +31,8 @@ export default function Tab() {
 
   if (!movie) return <Text>Movie not found</Text>;
 
+
+  
   return (
     <View style={styles.container}>
       <Text>{movie.title}</Text>

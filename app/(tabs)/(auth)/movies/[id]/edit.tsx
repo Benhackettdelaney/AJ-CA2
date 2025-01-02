@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, StyleSheet, Button } from 'react-native';
 import { useSession } from '@/context/AuthContext';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -12,12 +12,14 @@ export default function Page() {
     const { id } = useLocalSearchParams();
 
     const [form, setForm] = useState<MovieType>({
+        _id: "",
         title: "",
         description: "",
         genre_id: "",
         actor_id: "",
         list_id: "",
         release_date: "",
+        deleted: false
     });
     
     const { getRequest, putRequest, data, loading, error } = useAPI();

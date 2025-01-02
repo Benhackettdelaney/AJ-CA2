@@ -1,6 +1,11 @@
 import { createContext, useContext, PropsWithChildren } from "react";
 import { useStorageState } from "@/hooks/useStorageState";
 import { IAuthContext } from "@/types";
+import { Redirect } from "expo-router";
+
+interface Session {
+  token: string;
+}
 
 const AuthContext = createContext<IAuthContext | null>(null);
 
@@ -19,6 +24,9 @@ export function useSession() {
 
 export function SessionProvider(props: PropsWithChildren) {
   const [[isLoading, session], setSession] = useStorageState("session");
+
+
+  console.log('session token ', session);
 
   return (
     <AuthContext.Provider

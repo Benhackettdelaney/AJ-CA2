@@ -1,3 +1,4 @@
+import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -26,8 +27,10 @@ export default function Tab() {
   if (movies.length === 0) return <Text>No Movies found</Text>;
 
   return (
+    
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
+      <Text>Hello</Text>
         <FlatList
           data={movies}
           renderItem={({ item }) => <MovieItem movie={item} />}

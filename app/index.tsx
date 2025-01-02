@@ -1,16 +1,19 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import LoginForm from "@/components/LoginForm";
 import { useSession } from "@/context/AuthContext";
-import { Provider as PaperProvider } from "react-native-paper";
-import { Link } from "expo-router";
+// import { Provider as PaperProvider } from "react-native-paper";
 
 export default function Tab() {
   const { session, signOut } = useSession();
   console.log("session in tsbs index")
   return (
     <View style={styles.container}>
-      <Text>Tab Home REDIRECTED</Text>
-      <Link href="/(tabs)/(auth)/movies">Movies</Link>
+      <Text>Tab Home TESTING</Text>
+      {session ? (
+        <Button onPress={signOut} title="Logout" color="#841584" />
+      ) : (
+        <LoginForm />
+      )}
     </View>
   );
 }

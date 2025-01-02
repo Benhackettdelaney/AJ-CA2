@@ -11,6 +11,7 @@ export default function Root() {
   }
 
   if (!session) {
+    console.log('NO SESSION = REDIRECTING SOMEWHERE COOL')
     return <Redirect href="/" />;
   }
 

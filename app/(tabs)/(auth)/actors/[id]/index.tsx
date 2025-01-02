@@ -14,7 +14,7 @@ export default function Tab() {
 
   useEffect(() => {
     axios
-      .get(`https://aj-ca-1-nycs.vercel.app/api/actor/${id}`, {
+      .get(`https://localhost:5000/api/actor/${id}`, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImZ1bGxfbmFtZSI6Ik1heCBQb3dlciIsInJvbGUiOiJhZG1pbiIsIl9pZCI6IjY3NTFmOTExOGNhZDY4NWQ5OTE3NmIzNSIsImlhdCI6MTczMzc1Mjc2NX0.5HGqvbRYde0QR8ZxeFkkKTRrAMvcbxTT15_RxAdnCZY",
